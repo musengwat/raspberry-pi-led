@@ -1,0 +1,17 @@
+{
+  "name": "raspberry-pi-led",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo \"Starting Server\" && node src/server.js "
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "express": "^4.21.1",
+    "rpi-ws281x-native": "^1.0.4"
+  }
+}
