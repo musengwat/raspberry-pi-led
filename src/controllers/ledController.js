@@ -1,8 +1,32 @@
-const ws281x = require('rpi-ws281x-native');
+const ws281x = require("rpi-ws281x-native");
 
 // LED configuration
 const NUM_LEDS = 30; // Adjust to your LED strip's length
-ws281x.init(NUM_LEDS);
+// ws281x.init(NUM_LEDS);
+
+const options = {
+  dma: 10,
+  freq: 800000,
+  channels: [
+    {
+      count: NUM_LEDS,
+      gpio: 18,
+      invert: false,
+      brightness: 255,
+      stripType: "ws2812",
+    },
+  ],
+};
+
+const channel = ws281x(NUM_LEDS, options);
+
+const testLEDs = () => {
+  const colors = channel.array;
+
+  // update color-values
+  colors[42] = 0xffcc22;
+  ws281x.render();
+};
 
 // Helper function to set LED colors
 const setLEDs = (colorArray) => {
@@ -30,4 +54,4 @@ const cleanup = () => {
   ws281x.reset();
 };
 
-module.exports = { setColor, turnOffLEDs, cleanup };
+module.exports = { testLEDs, setColor, turnOffLEDs, cleanup };
