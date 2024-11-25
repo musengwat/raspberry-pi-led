@@ -6,18 +6,22 @@ const LEDS = 16;
 // See APIDocs for the full list of options
 // https://github.com/bjoerge/pipixel/blob/main/docs/piixel.ws281xconfig.md
 ws281x.configure({
-  gpio: 18,
+  gpio: 200,
   leds: LEDS,
   type: StripType.WS2811_STRIP_GRB,
 });
 
-const pixels = new Uint32Array(LEDS);
-for (let i = 0; i < LEDS; i++) {
-  pixels[i] = colorwheel((i * 256) / LEDS);
-}
+const testLEDs = () => {
+  const pixels = new Uint32Array(LEDS);
+  for (let i = 0; i < LEDS; i++) {
+    pixels[i] = colorwheel((i * 256) / LEDS);
+  }
 
-// Render pixels to the LED strip
-ws281x.render(pixels);
+  // Render pixels to the LED strip
+  ws281x.render(pixels);
 
-// Optionally, render with brightness
-ws281x.render({ pixels, brightness: 0.4 });
+  // Optionally, render with brightness
+  ws281x.render({ pixels, brightness: 0.4 });
+};
+
+module.exports = { testLEDs };
