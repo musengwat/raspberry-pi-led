@@ -1,8 +1,5 @@
-const {
-  testLEDs,
-  // setColor,
-  // turnOffLEDs,
-} = require("../controllers/ledController");
+import express from "express";
+import { testLEDs } from "../controllers";
 
 const router = express.Router();
 
@@ -13,4 +10,4 @@ router.post("/test", (req: any, res: any) => {
   res.send("LEDs updated");
 });
 
-module.exports = router;
+export default router;

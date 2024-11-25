@@ -1,21 +1,21 @@
-const express = require("express");
-const ledRoutes = require("./routes/ledRoutes");
-const { cleanup } = require("./controllers/ledController");
+import express, { Application } from "express";
+import testRoutes from "./routes/testRoutes";
 
-const app = express();
+const app: Application = express();
 const port = 3000;
 
 app.use(express.json());
 
-// Use LED routes
-app.use("/led", ledRoutes);
+app.use("/led", testRoutes);
 
-// Cleanup on exit
-process.on("SIGINT", () => {
-  cleanup();
-  process.exit();
-});
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+app
+  .listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  })
+  .on("error", (err: any) => {
+    if (err.code === "EADDRINUSE") {
+      console.log("Error: address already in use");
+    } else {
+      console.log(err);
+    }
+  });

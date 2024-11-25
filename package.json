@@ -1,23 +1,22 @@
 {
   "name": "raspberry-pi-led",
   "version": "1.0.0",
+  "main": "dist/index.js",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "echo \"Starting Server\" && node src/server.js "
+    "dev": "node ./dist/server.js",
+    "start": "echo \"Starting Server\" && tsc && npm run dev"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
   "dependencies": {
     "express": "^4.21.1",
-    "piixel": "^1.0.4",
-    "tsx": "^4.19.2"
+    "piixel": "^1.0.4"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "@types/node": "^22.9.4",
     "typescript": "^5.7.2"
   }
 }
