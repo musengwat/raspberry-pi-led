@@ -1,12 +1,12 @@
 import { colorwheel, StripType, ws281x } from "piixel";
 
-const LEDS = 16;
+const LEDS = 169;
 
 // Configure the library. Must be called before calling `render`.
 // See APIDocs for the full list of options
 // https://github.com/bjoerge/pipixel/blob/main/docs/piixel.ws281xconfig.md
 ws281x.configure({
-  gpio: 200,
+  gpio: 18,
   leds: LEDS,
   type: StripType.WS2811_STRIP_GRB,
 });
