@@ -1,12 +1,16 @@
 import express, { Application } from "express";
-import testRoutes from "./routes/testRoutes";
+// import testRoutes from "./routes/testRoutes";
+import bodyParser from "body-parser";
+import routes from "./routes";
 
 const app: Application = express();
 const port = 3000;
 
-app.use(express.json());
+// Middleware
+app.use(bodyParser.json()); // Parses JSON request bodies
 
-app.use("/led", testRoutes);
+// Routes
+app.use("/", routes);
 
 app
   .listen(port, () => {

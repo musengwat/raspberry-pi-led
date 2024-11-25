@@ -1,13 +1,23 @@
-import express from "express";
+import { Router } from "express";
 import { testLEDs } from "../controllers";
 
-const router = express.Router();
+const router = Router();
 
-router.post("/test", (req: any, res: any) => {
+router.post("/", (req: any, res: any) => {
   console.log("testing leds");
-
   testLEDs();
-  res.send("LEDs updated");
+  res.json({ message: "LEDs updated" });
+});
+
+// Sample GET route
+router.get("/", (req, res) => {
+  res.json({ message: "Welcome to the API!" });
+});
+
+// Sample POST route
+router.post("/sample/post", (req, res) => {
+  const { color } = req.body;
+  res.json({ color, status: "Data received" });
 });
 
 export default router;
