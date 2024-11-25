@@ -12,6 +12,7 @@
   "keywords": [],
   "dependencies": {
     "express": "^4.21.1",
+    "piixel": "^1.0.4",
     "tsx": "^4.19.2"
   },
   "devDependencies": {
