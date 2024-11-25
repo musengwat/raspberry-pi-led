@@ -12,10 +12,11 @@
   "keywords": [],
   "dependencies": {
     "express": "^4.21.1",
-    "piixel": "^1.0.4",
     "tsx": "^4.19.2"
   },
   "devDependencies": {
-    "@types/node": "^22.9.4"
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.9.4",
+    "typescript": "^5.7.2"
   }
 }

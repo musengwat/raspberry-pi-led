@@ -11,7 +11,7 @@ ws281x.configure({
   type: StripType.WS2811_STRIP_GRB,
 });
 
-const testLEDs = () => {
+export const testLEDs = () => {
   const pixels = new Uint32Array(LEDS);
   for (let i = 0; i < LEDS; i++) {
     pixels[i] = colorwheel((i * 256) / LEDS);
@@ -22,6 +22,6 @@ const testLEDs = () => {
 
   // Optionally, render with brightness
   ws281x.render({ pixels, brightness: 0.4 });
-};
 
-module.exports = { testLEDs };
+  return "leds have been turned on";
+};

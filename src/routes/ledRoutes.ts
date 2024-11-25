@@ -1,4 +1,3 @@
-const express = require("express");
 const {
   testLEDs,
   // setColor,
@@ -7,7 +6,7 @@ const {
 
 const router = express.Router();
 
-router.post("/test", (req, res) => {
+router.post("/test", (req: any, res: any) => {
   console.log("testing leds");
 
   testLEDs();

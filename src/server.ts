@@ -1,6 +1,6 @@
-const express = require('express');
-const ledRoutes = require('./routes/ledRoutes');
-const { cleanup } = require('./controllers/ledController');
+const express = require("express");
+const ledRoutes = require("./routes/ledRoutes");
+const { cleanup } = require("./controllers/ledController");
 
 const app = express();
 const port = 3000;
@@ -8,10 +8,10 @@ const port = 3000;
 app.use(express.json());
 
 // Use LED routes
-app.use('/led', ledRoutes);
+app.use("/led", ledRoutes);
 
 // Cleanup on exit
-process.on('SIGINT', () => {
+process.on("SIGINT", () => {
   cleanup();
   process.exit();
 });
