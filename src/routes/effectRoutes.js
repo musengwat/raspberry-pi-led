@@ -14,7 +14,8 @@ router.post("/pulse", (req, res) => {
 
 //reset LEDS
 router.post("/rainbow", (req, res) => {
-  rainbow(req.body);
+  const { brightness } = req.body;
+  rainbow(brightness);
   res.json({ message: "LEDs turned off" });
 });
 
