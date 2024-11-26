@@ -1,13 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const routes = require("./routes");
-const { clearLEDs } = require("./controllers/ledController");
 
 const app = express();
 const port = 3000;
 
 // Apply the middleware globally
-app.use(clearLEDs);
 
 // Middleware
 app.use(bodyParser.json()); // Parses JSON request bodies
