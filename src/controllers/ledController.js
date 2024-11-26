@@ -1,7 +1,6 @@
 const testLEDs = async () => {
   // Dynamically import the piixel module
   const { colorwheel, StripType, ws281x } = await import("piixel");
-  ws281x.reset();
 
   const LEDS = 169;
 
