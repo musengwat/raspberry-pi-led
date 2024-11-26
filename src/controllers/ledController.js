@@ -22,6 +22,6 @@ const testLEDs = async (numLeds) => {
   // Optionally, render with brightness
   ws281x.render({ pixels, brightness: 0.4 });
 
-  return "leds have been turned on";
+  return "leds have been turned on", LEDS;
 };
 module.exports = { testLEDs };
