@@ -6,7 +6,7 @@ const testLEDs = async (brightness) => {
   for (let i = 0; i < LEDS; i++) {
     pixels[i] = colorwheel((i * 256) / LEDS);
   }
-
+  console.log(ws281x, "in test");
   ws281x.render({ pixels, brightness });
   return "leds have been turned on", LEDS;
 };
