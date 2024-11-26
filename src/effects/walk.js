@@ -15,7 +15,7 @@ const walk = async () => {
     ws281x.render(pixels);
   }
 
-  setInterval(loop, 100);
+  setInterval(loop, 2);
 };
 
 module.exports = { walk };
