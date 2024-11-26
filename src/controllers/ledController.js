@@ -11,7 +11,7 @@ const initializeLEDs = async (resetOnExit = false) => {
       resetOnExit,
     });
   } catch (err) {
-    console.warn(err, "LEDs already initialized");
+    console.warn("LEDs already initialized");
   }
 
   return { colorwheel, rgb2hex, StripType, ws281x, LEDS };
