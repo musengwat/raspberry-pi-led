@@ -20,7 +20,7 @@ const initializeLEDs = async (resetOnExit = false) => {
 const clearLEDs = async () => {
   const { ws281x } = await initializeLEDs();
   ws281x.clear();
-
+  console.log("leds have been cleared");
   return "leds have been turned off";
 };
 
