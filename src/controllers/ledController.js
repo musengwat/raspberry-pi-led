@@ -1,7 +1,7 @@
-const testLEDs = async (numLeds) => {
+const testLEDs = async (config) => {
   const { colorwheel, StripType, ws281x } = await import("piixel");
 
-  const LEDS = numLeds;
+  const LEDS = config.numLeds;
 
   // Configure the library. Must be called before calling `render`
   ws281x.configure({
@@ -15,7 +15,7 @@ const testLEDs = async (numLeds) => {
     pixels[i] = colorwheel((i * 256) / LEDS);
   }
 
-  ws281x.render({ pixels, brightness: 0.4 });
+  ws281x.render({ pixels, brightness: config.brightness || 0.4 });
 
   return "leds have been turned on", LEDS;
 };
