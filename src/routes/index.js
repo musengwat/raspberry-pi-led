@@ -5,7 +5,7 @@ const effectRoutes = require("./effectRoutes");
 const router = Router();
 
 router.use("/test", testRoutes);
-// router.use("/effects", effectRoutes);
+router.use("/effect", effectRoutes);
 
 // export default router;
 module.exports = router;
