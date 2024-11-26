@@ -18,7 +18,7 @@ router.post("/rainbow", (req, res) => {
 });
 
 // Sample GET route
-router.get("/walk", (req, res) => {
+router.post("/walk", (req, res) => {
   walk();
   res.json({ message: "Welcome to the API!" });
 });
