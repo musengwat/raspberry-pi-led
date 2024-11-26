@@ -1,6 +1,6 @@
 const { initializeLEDs } = require("../controllers/ledController");
 
-const walk = async () => {
+const walk = async (delay = 200, iterations = 2) => {
   const { ws281x, colorwheel, LEDS } = await initializeLEDs(true);
 
   let offset = 0;
@@ -12,10 +12,12 @@ const walk = async () => {
 
     offset++;
 
-    ws281x.render(pixels);
+    setTimeout(() => {
+      ws281x.render(pixels);
+    }, delay);
   }
 
-  setInterval(loop, 2);
+  setInterval(loop, iterations);
 };
 
 module.exports = { walk };
