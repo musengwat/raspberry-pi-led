@@ -4,11 +4,15 @@ const initializeLEDs = async () => {
   const LEDS = 200;
   console.log(ws281x || "¯_(ツ)_/¯");
   // Configure the library. Must be called before calling `render`
-  ws281x.configure({
-    gpio: 18,
-    leds: LEDS,
-    type: StripType.WS2811_STRIP_GRB,
-  });
+  try {
+    ws281x.configure({
+      gpio: 18,
+      leds: LEDS,
+      type: StripType.WS2811_STRIP_GRB,
+    });
+  } catch (err) {
+    console.warn(err, "LEDs already initialized");
+  }
   console.log(ws281x || "bad");
 
   return { colorwheel, rgb2hex, StripType, ws281x, LEDS };
