@@ -1,9 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const routes = require("./routes");
-const { testLEDs } = require("./controllers/ledController");
-
-testLEDs();
 
 const app = express();
 const port = 3000;
