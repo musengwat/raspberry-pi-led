@@ -1,4 +1,4 @@
-const { colorwheel, StripType, ws281x } = require("piixel");
+import { colorwheel, StripType, ws281x } from "piixel";
 
 const LEDS = 169;
 
