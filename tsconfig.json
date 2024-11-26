@@ -25,5 +25,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "allowImportingTsExtensions": false
-  }
+  },
+  "includes": ["src-ts/**/*.ts"],
+  "exclude": ["node_modules", "src/**"]
 }
