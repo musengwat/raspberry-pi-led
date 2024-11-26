@@ -1,19 +1,18 @@
-const initializeLEDs = async () => {
+const initializeLEDs = async (resetOnExit = false) => {
   const { colorwheel, rgb2hex, StripType, ws281x } = await import("piixel");
 
   const LEDS = 200;
-  console.log(ws281x || "¯_(ツ)_/¯");
   // Configure the library. Must be called before calling `render`
   try {
     ws281x.configure({
       gpio: 18,
       leds: LEDS,
       type: StripType.WS2811_STRIP_GRB,
+      resetOnExit,
     });
   } catch (err) {
     console.warn(err, "LEDs already initialized");
   }
-  console.log(ws281x || "bad");
 
   return { colorwheel, rgb2hex, StripType, ws281x, LEDS };
 };
