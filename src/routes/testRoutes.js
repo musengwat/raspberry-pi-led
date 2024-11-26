@@ -17,14 +17,11 @@ router.post("/off", (req, res) => {
 });
 
 // Sample GET route
-router.get("/", (req, res) => {
-  res.json({ message: "Welcome to the API!" });
-});
-
-// Sample POST route
-router.post("/sample/post", (req, res) => {
-  const { color } = req.body;
-  res.json({ color, status: "Data received" });
+router.post("/reset", (req, res) => {
+  try {
+    resetLEDs();
+  } catch (e) {}
+  res.json({ message: "LEDs turned off" });
 });
 
 module.exports = router;
