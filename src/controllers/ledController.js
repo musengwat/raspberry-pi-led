@@ -1,6 +1,7 @@
 const testLEDs = async () => {
   // Dynamically import the piixel module
   const { colorwheel, StripType, ws281x } = await import("piixel");
+  ws281x.reset();
 
   const LEDS = 169;
 
@@ -17,10 +18,11 @@ const testLEDs = async () => {
   }
 
   // Render pixels to the LED strip
-  ws281x.render(pixels);
+  // ws281x.render(pixels);
 
   // Optionally, render with brightness
   ws281x.render({ pixels, brightness: 0.4 });
+  ws281x.reset();
 
   return "leds have been turned on";
 };
