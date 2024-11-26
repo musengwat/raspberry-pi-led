@@ -1,4 +1,4 @@
-export const testLEDs = async () => {
+const testLEDs = async () => {
   // Dynamically import the piixel module
   const { colorwheel, StripType, ws281x } = await import("piixel");
 
@@ -24,3 +24,4 @@ export const testLEDs = async () => {
 
   return "leds have been turned on";
 };
+module.exports = { testLEDs };
