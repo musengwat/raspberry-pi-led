@@ -12,9 +12,7 @@ const walk = async (delay = 200) => {
 
     offset++;
 
-    setTimeout(() => {
-      ws281x.render(pixels);
-    }, delay);
+    ws281x.render(pixels);
   }
 
   setInterval(loop, delay);
