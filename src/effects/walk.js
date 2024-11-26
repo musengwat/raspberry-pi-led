@@ -8,7 +8,7 @@ const walk = async (delay = 200) => {
   function loop() {
     const pixels = new Uint32Array(LEDS);
     // Set the color at the current offset
-    pixels[offset] = rgb2hex(255, 255, 255);
+    pixels[offset] = rgb2hex(252, 231, 170);
 
     offset++;
 
