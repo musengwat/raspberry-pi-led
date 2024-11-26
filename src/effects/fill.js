@@ -5,7 +5,8 @@ const fill = async (color, brightness) => {
   const pixels = new Uint32Array(LEDS);
   for (let i = 0; i < LEDS; i++) {
     console.log('color:',color)
-    pixels[i]  = typeof color === Object ? rgb2hex(color.r, color.g, color.b) : color || 255
+    // pixels[i]  = typeof color === Object ? rgb2hex(color.r, color.g, color.b) : color
+    pixels[i]  = rgb2hex(color.r, color.g, color.b)
   }
   console.log(ws281x, "in test");
   ws281x.render({ pixels, brightness: brightness || 0.4 });
