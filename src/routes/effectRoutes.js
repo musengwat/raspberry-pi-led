@@ -7,7 +7,8 @@ const { flow } = require("../effects/flow");
 const router = Router();
 // test LEDS
 router.post("/pulse", (req, res) => {
-  pulse(req.body);
+  const { delay, iterations } = req.body;
+  pulse(delay, iterations);
   res.json({ message: "LEDs updated" });
 });
 
@@ -19,7 +20,8 @@ router.post("/rainbow", (req, res) => {
 
 // Sample GET route
 router.post("/walk", async (req, res) => {
-  walk(req.body);
+  const { delay, iterations } = req.body;
+  walk(delay, iterations);
   res.json({ message: "Welcome to the API!" });
 });
 
@@ -31,7 +33,8 @@ router.post("/fill", (req, res) => {
 
 // Sample POST route
 router.post("/flow", (req, res) => {
-  flow(req.body);
+  const { delay, iterations } = req.body;
+  flow(delay, iterations);
   res.json({ status: "Data received" });
 });
 
