@@ -1,6 +1,6 @@
-const { colorwheel, StripType, ws281x } = await import("piixel");
-
 const testLEDs = async (numLeds) => {
+  const { colorwheel, StripType, ws281x } = await import("piixel");
+
   const LEDS = numLeds;
 
   // Configure the library. Must be called before calling `render`
@@ -20,7 +20,9 @@ const testLEDs = async (numLeds) => {
   return "leds have been turned on", LEDS;
 };
 
-const resetLEDs = async (numLeds) => {
+const resetLEDs = async () => {
+  const { ws281x } = await import("piixel");
+
   ws281x.reset();
 
   return "leds have been turned off";

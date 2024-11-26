@@ -11,8 +11,7 @@ router.post("/on", (req, res) => {
 
 //reset LEDS
 router.post("/off", (req, res) => {
-  const { numLeds } = req.body || 50;
-  resetLEDs(numLeds);
+  resetLEDs();
   res.json({ message: "LEDs turned off" });
 });
 
