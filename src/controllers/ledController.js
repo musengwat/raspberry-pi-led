@@ -16,13 +16,13 @@ const testLEDs = async (numLeds) => {
   }
 
   ws281x.render({ pixels, brightness: 0.4 });
+  ws281x.reset();
 
   return "leds have been turned on", LEDS;
 };
 
 const resetLEDs = async () => {
   const { ws281x } = await import("piixel");
-
   ws281x.reset();
 
   return "leds have been turned off";
