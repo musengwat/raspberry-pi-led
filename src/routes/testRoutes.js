@@ -5,7 +5,8 @@ const router = Router();
 
 router.post("/", (req, res) => {
   console.log("testing leds");
-  testLEDs();
+  const { numLeds } = req.body || 50;
+  testLEDs(numLeds);
   res.json({ message: "LEDs updated" });
 });
 

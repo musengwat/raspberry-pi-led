@@ -1,8 +1,8 @@
-const testLEDs = async () => {
+const testLEDs = async (numLeds) => {
   // Dynamically import the piixel module
   const { colorwheel, StripType, ws281x } = await import("piixel");
 
-  const LEDS = 169;
+  const LEDS = numLeds;
 
   // Configure the library. Must be called before calling `render`
   ws281x.configure({
