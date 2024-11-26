@@ -1,13 +1,19 @@
 const { Router } = require("express");
-const { testLEDs } = require("../controllers/ledController");
+const { testLEDs, resetLEDs } = require("../controllers/ledController");
 
 const router = Router();
-
-router.post("/", (req, res) => {
-  console.log("testing leds");
+// test LEDS
+router.post("/on", (req, res) => {
   const { numLeds } = req.body || 50;
   testLEDs(numLeds);
   res.json({ message: "LEDs updated" });
+});
+
+//reset LEDS
+router.post("/off", (req, res) => {
+  const { numLeds } = req.body || 50;
+  resetLEDs(numLeds);
+  res.json({ message: "LEDs turned off" });
 });
 
 // Sample GET route
@@ -22,5 +28,3 @@ router.post("/sample/post", (req, res) => {
 });
 
 module.exports = router;
-
-// export default router;
