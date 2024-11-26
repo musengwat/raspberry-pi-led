@@ -8,7 +8,7 @@ const walk = async (delay = 200) => {
   function loop() {
     const pixels = new Uint32Array(LEDS);
     // Set the color at the current offset
-    pixels[offset % LEDS] = colorwheel(offset % 255);
+    pixels[offsetS] = "#FFFFFF";
 
     offset++;
 
