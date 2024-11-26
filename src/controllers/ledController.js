@@ -10,6 +10,7 @@ const testLEDs = async (numLeds) => {
     leds: LEDS,
     type: StripType.WS2811_STRIP_GRB,
   });
+  ws281x.reset();
 
   const pixels = new Uint32Array(LEDS);
   for (let i = 0; i < LEDS; i++) {
