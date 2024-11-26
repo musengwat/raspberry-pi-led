@@ -4,8 +4,7 @@ const { testLEDs, resetLEDs } = require("../controllers/ledController");
 const router = Router();
 // test LEDS
 router.post("/on", (req, res) => {
-  const { numLeds } = req.body || 50;
-  testLEDs(numLeds);
+  testLEDs(req.body);
   res.json({ message: "LEDs updated" });
 });
 
