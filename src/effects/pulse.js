@@ -1,6 +1,6 @@
 const { initializeLEDs } = require("../controllers/ledController");
 
-const pulse = async (delay = 200, iterations = 16) => {
+const pulse = async (delay = 200) => {
   const { ws281x, colorwheel, LEDS } = await initializeLEDs(true);
   const MAX_BRIGHTNESS = 1;
   const MIN_BRIGHTNESS = 0.2;
@@ -23,12 +23,10 @@ const pulse = async (delay = 200, iterations = 16) => {
       direction = 1;
     }
     brightness += direction;
-    setTimeout(() => {
-      ws281x.render({ brightness: brightness * 0.01 });
-    }, delay);
+    ws281x.render({ brightness: brightness * 0.01 });
   }
 
-  setInterval(loop, iterations);
+  setInterval(loop, delay);
 
   return "leds have been turned on", LEDS;
 };

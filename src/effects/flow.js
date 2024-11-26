@@ -1,6 +1,6 @@
 const { initializeLEDs } = require("../controllers/ledController");
 
-const flow = async (delay = 200, iterations = 16) => {
+const flow = async (delay = 200) => {
   const { ws281x, colorwheel, LEDS } = await initializeLEDs(true);
 
   // Current pixel position
@@ -14,12 +14,10 @@ const flow = async (delay = 200, iterations = 16) => {
       // Set the color at the current offset
       pixels[i] = colorwheel((i * LEDS + offset) % 255);
     }
-    setTimeout(() => {
-      ws281x.render(pixels);
-    }, delay);
+    ws281x.render(pixels);
   }
 
-  setInterval(loop, iterations);
+  setInterval(loop, delay);
 };
 
 module.exports = { flow };
