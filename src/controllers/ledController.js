@@ -17,11 +17,18 @@ const initializeLEDs = async (resetOnExit = false) => {
   return { colorwheel, rgb2hex, StripType, ws281x, LEDS };
 };
 
-const resetLEDs = async () => {
-  const { ws281x } = await import("piixel");
-  ws281x.reset();
+const clearLEDs = async () => {
+  const { ws281x } = await initializeLEDs();
+  ws281x.clear();
 
   return "leds have been turned off";
 };
 
-module.exports = { initializeLEDs, resetLEDs };
+const resetLEDs = async () => {
+  const { ws281x } = await initializeLEDs();
+  ws281x.reset();
+
+  return "leds have been turned off and processes has been killed";
+};
+
+module.exports = { initializeLEDs, clearLEDs, resetLEDs };
