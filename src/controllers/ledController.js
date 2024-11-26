@@ -1,17 +1,16 @@
-import { colorwheel, StripType, ws281x } from "piixel";
+export const testLEDs = async () => {
+  // Dynamically import the piixel module
+  const { colorwheel, StripType, ws281x } = await import("piixel");
 
-const LEDS = 169;
+  const LEDS = 169;
 
-// Configure the library. Must be called before calling `render`.
-// See APIDocs for the full list of options
-// https://github.com/bjoerge/pipixel/blob/main/docs/piixel.ws281xconfig.md
-ws281x.configure({
-  gpio: 18,
-  leds: LEDS,
-  type: StripType.WS2811_STRIP_GRB,
-});
+  // Configure the library. Must be called before calling `render`
+  ws281x.configure({
+    gpio: 18,
+    leds: LEDS,
+    type: StripType.WS2811_STRIP_GRB,
+  });
 
-const testLEDs = () => {
   const pixels = new Uint32Array(LEDS);
   for (let i = 0; i < LEDS; i++) {
     pixels[i] = colorwheel((i * 256) / LEDS);
@@ -25,5 +24,3 @@ const testLEDs = () => {
 
   return "leds have been turned on";
 };
-
-module.exports = { testLEDs };
