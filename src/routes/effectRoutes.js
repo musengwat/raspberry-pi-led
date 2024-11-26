@@ -3,6 +3,8 @@ const { pulse } = require("../effects/pulse");
 const { rainbow } = require("../effects/rainbow");
 const { walk } = require("../effects/walk");
 const { flow } = require("../effects/flow");
+const { fill } = require("../effects/fill");
+
 
 const router = Router();
 // test LEDS
@@ -28,7 +30,8 @@ router.post("/walk", async (req, res) => {
 
 // Sample POST route
 router.post("/fill", (req, res) => {
-  const { color } = req.body;
+  const { color, brightness } = req.body;
+  fill(color, brightness)
   res.json({ color, status: "Data received" });
 });
 

@@ -1,10 +1,10 @@
 const { Router } = require("express");
-const testRoutes = require("./testRoutes");
+const baseRoutes = require("./baseRoutes");
 const effectRoutes = require("./effectRoutes");
 
 const router = Router();
 
-router.use("/", testRoutes);
+router.use("/", baseRoutes);
 router.use("/effect", effectRoutes);
 
 // export default router;
