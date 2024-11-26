@@ -1,28 +1,26 @@
 const { Router } = require("express");
-const { resetLEDs } = require("../controllers/ledController");
-const { testLEDs } = require("../effects/test");
+const { pulse } = require("../effects/pulse");
 
 const router = Router();
 // test LEDS
-router.post("/on", (req, res) => {
-  const { brightness } = req.body || 0.4;
-  testLEDs(brightness);
+router.post("/pulse", (req, res) => {
+  testLEDs();
   res.json({ message: "LEDs updated" });
 });
 
 //reset LEDS
-router.post("/off", (req, res) => {
+router.post("/walk", (req, res) => {
   resetLEDs();
   res.json({ message: "LEDs turned off" });
 });
 
 // Sample GET route
-router.get("/", (req, res) => {
+router.get("/flow", (req, res) => {
   res.json({ message: "Welcome to the API!" });
 });
 
 // Sample POST route
-router.post("/sample/post", (req, res) => {
+router.post("/fill", (req, res) => {
   const { color } = req.body;
   res.json({ color, status: "Data received" });
 });

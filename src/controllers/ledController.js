@@ -1,23 +1,16 @@
-import { colorwheel, StripType, ws281x } from "piixel";
+const initializeLEDs = async () => {
+  const { colorwheel, rgb2hex, StripType, ws281x } = await import("piixel");
 
-const LEDS = 200;
+  const LEDS = 200;
 
-// Configure the library. Must be called before calling `render`
-ws281x.configure({
-  gpio: 18,
-  leds: LEDS,
-  type: StripType.WS2811_STRIP_GRB,
-});
+  // Configure the library. Must be called before calling `render`
+  ws281x.configure({
+    gpio: 18,
+    leds: LEDS,
+    type: StripType.WS2811_STRIP_GRB,
+  });
 
-const testLEDs = async (brightness) => {
-  const pixels = new Uint32Array(LEDS);
-  for (let i = 0; i < LEDS; i++) {
-    pixels[i] = colorwheel((i * 256) / LEDS);
-  }
-
-  ws281x.render({ pixels, brightness });
-
-  return "leds have been turned on", LEDS;
+  return { colorwheel, rgb2hex, StripType, ws281x, LEDS };
 };
 
 const resetLEDs = async () => {
@@ -26,4 +19,5 @@ const resetLEDs = async () => {
 
   return "leds have been turned off";
 };
-module.exports = { testLEDs, resetLEDs };
+
+module.exports = { initializeLEDs, resetLEDs };
