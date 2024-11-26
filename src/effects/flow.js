@@ -13,11 +13,12 @@ const flow = async (delay) => {
     for (let i = 0; i < LEDS; i++) {
       // Set the color at the current offset
       pixels[i] = colorwheel((i * LEDS + offset) % 255);
+
     }
     ws281x.render(pixels);
   }
 
-  setInterval(loop, delay || 250);
+  setInterval(loop, delay);
 };
 
 module.exports = { flow };

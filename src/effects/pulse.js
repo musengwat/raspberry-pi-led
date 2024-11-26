@@ -26,7 +26,7 @@ const pulse = async (delay) => {
     ws281x.render({ brightness: brightness * 0.01 });
   }
 
-  setInterval(loop, delay || 250);
+  setInterval(loop, delay || 16);
 
   return "leds have been turned on", LEDS;
 };
