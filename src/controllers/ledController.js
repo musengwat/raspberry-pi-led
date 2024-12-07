@@ -14,4 +14,4 @@ const initializeLEDs = async (leds, gpio) => {
   return { colorwheel, rgb2hex, StripType, ws281x, LEDS };
 };
 
-module.exports = { initializeLEDs, clearLEDs, resetLEDs };
+module.exports = { initializeLEDs };
