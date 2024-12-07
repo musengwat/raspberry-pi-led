@@ -14,6 +14,7 @@ const flow = async (delay, gpio) => {
       // Set the color at the current offset
       pixels[i] = colorwheel((i * LEDS + offset) % 255);
     }
+    console.log(offset);
     ws281x.render(pixels);
   }
 
