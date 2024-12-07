@@ -19,7 +19,6 @@ const flow = async (delay) => {
       pixels[i] = colorwheel((i * LEDS + offset) % 255);
     }
     ws281x.render(pixels);
-    ws281x_2.render(pixels);
   }
 
   setInterval(loop, delay);
