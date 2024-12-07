@@ -6,7 +6,7 @@ const initializeLEDs = async (resetOnExit = true, gpio) => {
   console.log(resetOnExit, gpio);
   try {
     ws281x.configure({
-      gpio: gpio,
+      gpio: gpio || 18,
       leds: LEDS,
       type: StripType.WS2811_STRIP_GRB,
       resetOnExit,
@@ -24,8 +24,8 @@ const clearLEDs = async () => {
   return "leds have been turned off";
 };
 
-const resetLEDs = async () => {
-  const { ws281x } = await initializeLEDs();
+const resetLEDs = async (gpio) => {
+  const { ws281x } = await initializeLEDs(true, gpio);
   ws281x.reset();
 
   return "leds have been turned off and processes has been killed";

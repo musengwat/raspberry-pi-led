@@ -20,7 +20,8 @@ router.post("/off", (req, res) => {
 
 // Sample GET route
 router.post("/reset", (req, res) => {
-  clearLEDs();
+  const { gpio } = req.body;
+  clearLEDs(gpio);
   res.json({ message: "LEDs turned off" });
 });
 
