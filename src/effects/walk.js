@@ -5,15 +5,15 @@ const walk = async (delay = 200, gpio) => {
 
   let offset = 0;
 
-  function loop() {
+  const loop = async () => {
     const pixels = new Uint32Array(LEDS);
     // Set the color at the current offset
     pixels[offset % LEDS] = colorwheel(offset % 255);
 
     offset++;
-
-    ws281x.render(pixels);
-  }
+    console.log(offset);
+    return ws281x.render(pixels);
+  };
 
   setInterval(loop, delay);
 };

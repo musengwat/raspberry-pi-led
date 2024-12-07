@@ -6,7 +6,7 @@ const flow = async (delay, gpio) => {
   // Current pixel position
   let offset = 0;
 
-  function loop() {
+  const loop = async () => {
     const pixels = new Uint32Array(LEDS);
     offset++;
 
@@ -15,8 +15,8 @@ const flow = async (delay, gpio) => {
       pixels[i] = colorwheel((i * LEDS + offset) % 255);
     }
     console.log(offset);
-    ws281x.render(pixels);
-  }
+    return ws281x.render(pixels);
+  };
 
   setInterval(loop, delay);
 };
