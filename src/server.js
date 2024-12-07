@@ -7,7 +7,7 @@ const createRoutes = require("./routes"); // Use a function to generate routes w
 const app = express();
 const port = 3000;
 const LEDS = 200;
-const gpio = 18;
+const gpio = [18, 12];
 
 (async () => {
   try {
