@@ -42,7 +42,7 @@ router.post("/flow", (req, res) => {
 });
 
 // Sample POST route
-router.post("/flow2", (req, res) => {
+router.post("/walk", (req, res) => {
   const { delay } = req.body;
   flow2(delay);
   res.json({ status: "Data received" });

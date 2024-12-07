@@ -1,7 +1,7 @@
-const { initializeLEDs } = require("../controllers/ledController");
+const { initializeLEDs2 } = require("../controllers/ledController");
 
 const walk = async (delay = 200) => {
-  const { ws281x, colorwheel, LEDS } = await initializeLEDs(true);
+  const { ws281x, colorwheel, LEDS } = await initializeLEDs2(true);
 
   let offset = 0;
 
