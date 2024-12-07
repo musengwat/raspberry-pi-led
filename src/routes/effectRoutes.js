@@ -4,6 +4,7 @@ const { rainbow } = require("../effects/rainbow");
 const { walk } = require("../effects/walk");
 const { flow } = require("../effects/flow");
 const { fill } = require("../effects/fill");
+const { loudness } = require("../effects/loudnessEffect");
 
 module.exports = (ledContext) => {
   const router = Router();
@@ -74,7 +75,7 @@ module.exports = (ledContext) => {
 
   router.post("/loudness", async (req, res) => {
     try {
-      const response = await flow(ledContext);
+      const response = await loudness(ledContext);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
       res
