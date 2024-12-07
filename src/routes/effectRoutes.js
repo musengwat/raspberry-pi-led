@@ -35,7 +35,7 @@ router.post("/rainbow", async (req, res) => {
 // Sample GET route
 router.post("/walk", async (req, res) => {
   try {
-    const { delay } = req.body;
+    const { delay, gpio } = req.body;
     const response = await walk(delay);
     res.json({ message: `LEDs updated ${response}` });
   } catch (error) {
@@ -61,7 +61,7 @@ router.post("/fill", async (req, res) => {
 // Sample POST route
 router.post("/flow", async (req, res) => {
   try {
-    const { delay } = req.body;
+    const { delay, gpio } = req.body;
     const response = await flow(delay);
     res.json({ message: `LEDs updated ${response}` });
   } catch (error) {
