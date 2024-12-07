@@ -4,17 +4,16 @@ const initializeLEDs = async (resetOnExit = false) => {
   const LEDS = 200;
   // Configure the library. Must be called before calling `render`
   try {
-    await ws281x.configure({
-      gpio: 18,
+    ws281x.configure({
+      gpio: 12,
       leds: LEDS,
       type: StripType.WS2811_STRIP_GRB,
       resetOnExit,
     });
-    return { colorwheel, rgb2hex, StripType, ws281x, LEDS };
   } catch (err) {
     console.warn("LEDs already initialized");
   }
-  return;
+  return { colorwheel, rgb2hex, StripType, ws281x, LEDS };
 };
 
 const initializeLEDs2 = async (resetOnExit = false) => {
@@ -22,18 +21,18 @@ const initializeLEDs2 = async (resetOnExit = false) => {
 
   const LEDS = 200;
   // Configure the library. Must be called before calling `render`
+  const ws281x_2 = undefined;
   try {
-    const ws281x_2 = await ws281x.configure({
-      gpio: 12,
+    ws281x_2 = await ws281x.configure({
+      gpio: 18,
       leds: LEDS,
       type: StripType.WS2811_STRIP_GRB,
       resetOnExit,
     });
-    return { colorwheel, rgb2hex, StripType, ws281x_2, LEDS };
   } catch (err) {
     console.warn("LEDs already initialized");
   }
-  return;
+  return { colorwheel, rgb2hex, StripType, ws281x_2, LEDS };
 };
 
 const clearLEDs = async () => {
