@@ -1,29 +1,11 @@
-const initializeLEDs = async (resetOnExit = false) => {
+const initializeLEDs = async (resetOnExit = false, gpio = 18) => {
   const { colorwheel, rgb2hex, StripType, ws281x } = await import("piixel");
 
   const LEDS = 200;
   // Configure the library. Must be called before calling `render`
   try {
     ws281x.configure({
-      gpio: 10,
-      leds: LEDS,
-      type: StripType.WS2811_STRIP_GRB,
-      resetOnExit,
-    });
-  } catch (err) {
-    console.warn("LEDs already initialized");
-  }
-  return { colorwheel, rgb2hex, StripType, ws281x, LEDS };
-};
-
-const initializeLEDs2 = async (resetOnExit = false) => {
-  const { colorwheel, rgb2hex, StripType, ws281x } = await import("piixel");
-
-  const LEDS = 200;
-  // Configure the library. Must be called before calling `render`
-  try {
-    ws281x.configure({
-      gpio: 18,
+      gpio: gpio,
       leds: LEDS,
       type: StripType.WS2811_STRIP_GRB,
       resetOnExit,
@@ -48,4 +30,4 @@ const resetLEDs = async () => {
   return "leds have been turned off and processes has been killed";
 };
 
-module.exports = { initializeLEDs, initializeLEDs2, clearLEDs, resetLEDs };
+module.exports = { initializeLEDs, clearLEDs, resetLEDs };
