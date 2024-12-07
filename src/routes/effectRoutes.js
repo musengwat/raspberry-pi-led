@@ -36,7 +36,7 @@ router.post("/rainbow", async (req, res) => {
 router.post("/walk", async (req, res) => {
   try {
     const { delay, gpio } = req.body;
-    const response = await walk(delay);
+    const response = await walk(delay, gpio);
     res.json({ message: `LEDs updated ${response}` });
   } catch (error) {
     res
@@ -62,7 +62,7 @@ router.post("/fill", async (req, res) => {
 router.post("/flow", async (req, res) => {
   try {
     const { delay, gpio } = req.body;
-    const response = await flow(delay);
+    const response = await flow(delay, gpio);
     res.json({ message: `LEDs updated ${response}` });
   } catch (error) {
     res
