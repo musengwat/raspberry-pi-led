@@ -2,13 +2,8 @@ const { Router } = require("express");
 const { pulse } = require("../effects/pulse");
 const { rainbow } = require("../effects/rainbow");
 const { walk } = require("../effects/walk");
-const { flow, flow2 } = require("../effects/flow");
+const { flow } = require("../effects/flow");
 const { fill } = require("../effects/fill");
-
-// const router = Router();
-// // test LEDS
-
-// module.exports = router;
 
 module.exports = (ledContext) => {
   const router = Router();

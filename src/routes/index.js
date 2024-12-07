@@ -1,11 +1,13 @@
 const { Router } = require("express");
-const baseRoutes = require("./baseRoutes");
-const effectRoutes = require("./effectRoutes");
+const createBaseRoutes = require("./baseRoutes"); // Function to create base routes
+const createEffectRoutes = require("./effectRoutes"); // Function to create effect routes
 
-const router = Router();
+module.exports = (ledContext) => {
+  const router = Router();
 
-router.use("/", baseRoutes);
-router.use("/effect", effectRoutes);
+  // Pass the LED context to each route
+  router.use("/", createBaseRoutes(ledContext));
+  router.use("/effect", createEffectRoutes(ledContext));
 
-// export default router;
-module.exports = router;
+  return router;
+};
