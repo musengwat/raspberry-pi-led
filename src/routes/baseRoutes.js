@@ -1,28 +1,30 @@
 const { Router } = require("express");
-const {
-  initializeLEDs,
-  clearLEDs,
-  resetLEDs,
-} = require("../controllers/ledController");
+const { clearLEDs, resetLEDs } = require("../effects/baseEffects");
 
 const router = Router();
-// test LEDS
-router.post("/on", (req, res) => {
-  initializeLEDs;
-  res.json({ message: "LEDs updated" });
-});
-
 //reset LEDS
-router.post("/off", (req, res) => {
-  resetLEDs();
-  res.json({ message: "LEDs turned off" });
+router.post("/off", async (req, res) => {
+  try {
+    const response = await resetLEDs();
+    res.json({ message: `LEDs turned off ${response}` });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Failed to turn off LEDs", details: error.message });
+  }
 });
 
 // Sample GET route
-router.post("/reset", (req, res) => {
-  const { gpio } = req.body;
-  clearLEDs(gpio);
-  res.json({ message: "LEDs turned off" });
+router.post("/reset", async (req, res) => {
+  try {
+    const { gpio } = reaq.body;
+    const response = await clearLEDs(gpio);
+    res.json({ message: `LEDs turned off ${response}` });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Failed to turn off LEDs", details: error.message });
+  }
 });
 
 module.exports = router;

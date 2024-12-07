@@ -1,9 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const routes = require("./routes");
+const { initializeLEDs } = require("../controllers/ledController");
 
 const app = express();
 const port = 3000;
+
+const ledStartup = async () => {
+  const { ws281x } = await initializeLEDs();
+};
 
 // Apply the middleware globally
 
@@ -11,7 +16,7 @@ const port = 3000;
 app.use(bodyParser.json()); // Parses JSON request bodies
 
 // Routes
-app.use("/", routes);
+app.use("/", await routes);
 
 app
   .listen(port, () => {
