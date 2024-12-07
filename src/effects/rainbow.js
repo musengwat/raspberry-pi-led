@@ -1,7 +1,5 @@
-const { initializeLEDs } = require("../controllers/ledController");
-
-const rainbow = async (brightness) => {
-  const { ws281x, colorwheel, LEDS } = await initializeLEDs();
+const rainbow = async (ledContext, brightness) => {
+  const { ws281x, colorwheel, LEDS } = ledContext;
   const pixels = new Uint32Array(LEDS);
   for (let i = 0; i < LEDS; i++) {
     pixels[i] = colorwheel((i * 256) / LEDS);

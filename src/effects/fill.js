@@ -1,7 +1,5 @@
-const { initializeLEDs } = require("../controllers/ledController");
-
-const fill = async (color, brightness) => {
-  const { ws281x, LEDS, rgb2hex } = await initializeLEDs();
+const fill = async (ledContext, color, brightness) => {
+  const { ws281x, LEDS, rgb2hex } = ledContext;
   const pixels = new Uint32Array(LEDS);
   for (let i = 0; i < LEDS; i++) {
     console.log("color:", color);

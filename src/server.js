@@ -1,31 +1,32 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const routes = require("./routes");
-const { initializeLEDs } = require("../controllers/ledController");
+// const routes = require("./routes");
+const { initializeLEDs } = require("./controllers/ledController");
+const createRoutes = require("./routes"); // Use a function to generate routes with context
 
 const app = express();
 const port = 3000;
+const LEDS = 200;
+const gpio = 18;
 
-const ledStartup = async () => {
-  const { ws281x } = await initializeLEDs();
-};
+(async () => {
+  try {
+    // Initialize LEDs once at startup
+    const ledContext = await initializeLEDs(LEDS, gpio);
+    console.log("LEDs initialized");
 
-// Apply the middleware globally
+    // Middleware
+    app.use(bodyParser.json());
 
-// Middleware
-app.use(bodyParser.json()); // Parses JSON request bodies
+    // Pass the LED context to routes
+    app.use("/", createRoutes(ledContext));
 
-// Routes
-app.use("/", await routes);
-
-app
-  .listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-  })
-  .on("error", (err) => {
-    if (err.code === "EADDRINUSE") {
-      console.log("Error: address already in use");
-    } else {
-      console.log(err);
-    }
-  });
+    // Start the server
+    app.listen(port, () => {
+      console.log(`Server running at http://localhost:${port}`);
+    });
+  } catch (err) {
+    console.error("Error during startup:", err);
+    process.exit(1); // Exit with error code
+  }
+})();

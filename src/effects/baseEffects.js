@@ -1,14 +1,12 @@
-const { initializeLEDs } = require("../controllers/ledController");
-
-const clearLEDs = async () => {
-  const { ws281x } = await initializeLEDs();
+const clearLEDs = async (ledContext) => {
+  const { ws281x } = ledContext;
   ws281x.clear();
   console.log("leds have been cleared");
   return "leds have been turned off";
 };
 
-const resetLEDs = async (gpio) => {
-  const { ws281x } = await initializeLEDs(gpio);
+const resetLEDs = async (ledContext) => {
+  const { ws281x } = ledContext;
   ws281x.reset();
 
   return "leds have been turned off and processes has been killed";
