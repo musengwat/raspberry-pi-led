@@ -2,9 +2,8 @@ const { Router } = require("express");
 const { pulse } = require("../effects/pulse");
 const { rainbow } = require("../effects/rainbow");
 const { walk } = require("../effects/walk");
-const { flow } = require("../effects/flow");
+const { flow, flow2 } = require("../effects/flow");
 const { fill } = require("../effects/fill");
-
 
 const router = Router();
 // test LEDS
@@ -31,7 +30,7 @@ router.post("/walk", async (req, res) => {
 // Sample POST route
 router.post("/fill", (req, res) => {
   const { color, brightness } = req.body;
-  fill(color, brightness)
+  fill(color, brightness);
   res.json({ color, status: "Data received" });
 });
 
@@ -39,6 +38,13 @@ router.post("/fill", (req, res) => {
 router.post("/flow", (req, res) => {
   const { delay } = req.body;
   flow(delay);
+  res.json({ status: "Data received" });
+});
+
+// Sample POST route
+router.post("/flow2", (req, res) => {
+  const { delay } = req.body;
+  flow2(delay);
   res.json({ status: "Data received" });
 });
 

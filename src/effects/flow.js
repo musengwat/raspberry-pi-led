@@ -24,5 +24,24 @@ const flow = async (delay) => {
 
   setInterval(loop, delay);
 };
+const flow2 = async (delay) => {
+  const { ws281x, colorwheel, LEDS } = await initializeLEDs2(true);
 
-module.exports = { flow };
+  // Current pixel position
+  let offset = 0;
+
+  function loop() {
+    const pixels = new Uint32Array(LEDS);
+    offset++;
+
+    for (let i = 0; i < LEDS; i++) {
+      // Set the color at the current offset
+      pixels[i] = colorwheel((i * LEDS + offset) % 255);
+    }
+    ws281x.render(pixels);
+  }
+
+  setInterval(loop, delay);
+};
+
+module.exports = { flow, flow2 };
