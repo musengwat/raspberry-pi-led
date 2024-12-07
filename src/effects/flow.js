@@ -1,7 +1,7 @@
 const { initializeLEDs } = require("../controllers/ledController");
 
 const flow = async (delay, gpio) => {
-  const { ws281x, colorwheel, LEDS } = await initializeLEDs(true, gpio);
+  const { ws281x, colorwheel, LEDS } = await initializeLEDs(gpio);
 
   // Current pixel position
   let offset = 0;
