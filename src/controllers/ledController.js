@@ -5,7 +5,7 @@ const initializeLEDs = async (resetOnExit = false) => {
   // Configure the library. Must be called before calling `render`
   try {
     ws281x.configure({
-      gpio: 12,
+      gpio: 10,
       leds: LEDS,
       type: StripType.WS2811_STRIP_GRB,
       resetOnExit,
