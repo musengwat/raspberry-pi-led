@@ -72,5 +72,16 @@ module.exports = (ledContext) => {
     }
   });
 
+  router.post("/loudness", async (req, res) => {
+    try {
+      const response = await flow(ledContext);
+      res.json({ message: `LEDs updated ${response}` });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "Failed to update LEDs", details: error.message });
+    }
+  });
+
   return router;
 };
