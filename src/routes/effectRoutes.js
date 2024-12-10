@@ -39,7 +39,7 @@ module.exports = (ledContext) => {
   router.post("/walk", async (req, res) => {
     try {
       const { delay, brightness } = req.body;
-      const response = await walk(ledContext, delay, brightness);
+      const response = walk(ledContext, delay, brightness);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
       res
