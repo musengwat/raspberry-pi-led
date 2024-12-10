@@ -1,6 +1,6 @@
 const grow = async (ledContext, brightness) => {
   const { ws281x, colorwheel, LEDS } = ledContext;
-  let offset = 0;
+  let offset = 55;
   const pixels = new Uint32Array(LEDS);
 
   for (let i = 0; i < LEDS; i++) {
