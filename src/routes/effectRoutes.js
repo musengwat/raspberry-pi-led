@@ -8,6 +8,7 @@ const { grow } = require("../effects/grow");
 const { sparkle } = require("../effects/sparkle");
 const { loudness } = require("../effects/loudnessEffect");
 const { waveformEffect } = require("../effects/waveformEffect");
+const { firework } = require("../effects/firework");
 
 module.exports = (ledContext) => {
   const router = Router();
@@ -39,7 +40,7 @@ module.exports = (ledContext) => {
   router.post("/firework", async (req, res) => {
     try {
       const { delay, brightness } = req.body;
-      const response = await fireworkEffect(ledContext, delay, brightness);
+      const response = await firework(ledContext, delay, brightness);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
       res
