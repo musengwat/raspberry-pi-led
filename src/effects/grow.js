@@ -9,6 +9,7 @@ const grow = async (ledContext, brightness) => {
     // Update only the current LED
     pixels[offset] = colorwheel(offset % 255);
 
+    await ws281x.clear();
     await ws281x.render({ pixels, brightness: brightness || 0.8 });
 
     // Update offset based on direction
