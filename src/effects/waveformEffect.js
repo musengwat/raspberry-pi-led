@@ -1,5 +1,5 @@
 const waveformEffect = async (ledContext, delay, brightnes) => {
-  const { ws281x, LEDS } = ledContext;
+  const { ws281x, LEDS, colorwheel } = ledContext;
   const pixels = new Uint32Array(LEDS);
 
   const loop = async () => {
