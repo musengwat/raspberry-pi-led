@@ -34,7 +34,7 @@ const calculateBrightness = (volume) => {
   );
 };
 
-const loudness = async (ledContext) => {
+const loudness = async (ledContext, brightness) => {
   const { ws281x, colorwheel, LEDS } = ledContext;
   const micInputStream = micInstance.getAudioStream();
 
@@ -48,7 +48,7 @@ const loudness = async (ledContext) => {
     }
     return ws281x.render({
       pixels,
-      brightness,
+      brightness: brightness || 0.8,
     });
   };
 

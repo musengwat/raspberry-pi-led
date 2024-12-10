@@ -1,6 +1,6 @@
-const pulse = async (ledContext, delay) => {
+const pulse = async (ledContext, delay, maxBrightness) => {
   const { ws281x, colorwheel, LEDS } = ledContext;
-  const MAX_BRIGHTNESS = 1;
+  const MAX_BRIGHTNESS = maxBrightness || 0.8;
   const MIN_BRIGHTNESS = 0.2;
   // loop with brightness as an integer between 0 and 100
   let brightness = MIN_BRIGHTNESS * 100;

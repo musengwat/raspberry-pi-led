@@ -1,4 +1,4 @@
-const flow = async (ledContext, delay) => {
+const flow = async (ledContext, delay, brightness) => {
   const { ws281x, colorwheel, LEDS } = ledContext;
 
   // Current pixel position
@@ -13,7 +13,7 @@ const flow = async (ledContext, delay) => {
       pixels[i] = colorwheel((i * LEDS + offset) % 255);
     }
     console.log(offset);
-    return ws281x.render({ pixels, brightness: 1 });
+    return ws281x.render({ pixels, brightness: brightness || 0.8 });
   };
 
   setInterval(loop, delay);

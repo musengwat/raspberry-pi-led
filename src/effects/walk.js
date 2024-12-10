@@ -1,4 +1,4 @@
-const walk = async (ledContext, delay = 200) => {
+const walk = async (ledContext, delay = 200, brightness) => {
   const { ws281x, colorwheel, LEDS } = ledContext;
 
   let offset = 0;
@@ -10,7 +10,7 @@ const walk = async (ledContext, delay = 200) => {
 
     offset++;
     console.log(offset);
-    return ws281x.render(pixels);
+    return ws281x.render({ pixels, brightness: brightness || 0.8 });
   };
 
   setInterval(loop, delay);

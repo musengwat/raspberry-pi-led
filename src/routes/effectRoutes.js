@@ -11,7 +11,7 @@ module.exports = (ledContext) => {
 
   router.post("/pulse", async (req, res) => {
     try {
-      const { delay } = req.body;
+      const { delay, brightness } = req.body;
       const response = await pulse(ledContext, delay);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
@@ -37,7 +37,7 @@ module.exports = (ledContext) => {
   // Sample GET route
   router.post("/walk", async (req, res) => {
     try {
-      const { delay } = req.body;
+      const { delay, brightness } = req.body;
       const response = await walk(ledContext, delay);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
@@ -63,7 +63,7 @@ module.exports = (ledContext) => {
   // Sample POST route
   router.post("/flow", async (req, res) => {
     try {
-      const { delay } = req.body;
+      const { delay, brightness } = req.body;
       const response = await flow(ledContext, delay);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
