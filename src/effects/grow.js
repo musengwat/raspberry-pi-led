@@ -5,10 +5,7 @@ const grow = async (ledContext, brightness) => {
   let direction = 1; // 1 for forward, -1 for backward
 
   while (true) {
-    pixels[offset] = 0;
-    await ws281x.render({ pixels, brightness: brightness || 0.8 });
-
-    pixels[offset] = colorwheel(offset % 255);
+    pixels[offset] = direction === 1 ? colorwheel(offset % 255) : 0;
     await ws281x.render({ pixels, brightness: brightness || 0.8 });
 
     // Update offset based on direction
