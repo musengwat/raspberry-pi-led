@@ -51,7 +51,7 @@ module.exports = (ledContext) => {
   router.post("/grow", async (req, res) => {
     try {
       const { brightness } = req.body;
-      const response = await grow(ledContext, brightness);
+      const response = await grow(ledContext, delay, brightness);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
       res

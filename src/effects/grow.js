@@ -7,7 +7,7 @@ const grow = async (ledContext, delay, brightness) => {
   const loop = async () => {
     pixels[offset] = direction === 1 ? colorwheel(offset % 255) : 0;
     offset += direction;
-    console.log(offset, direction);
+    console.log(offset, direction, delay);
 
     // Reverse direction at the ends
     if (offset >= LEDS || offset < 0) {
