@@ -4,6 +4,7 @@ const { rainbow } = require("../effects/rainbow");
 const { walk } = require("../effects/walk");
 const { flow } = require("../effects/flow");
 const { fill } = require("../effects/fill");
+const { grow } = require("../effects/grow");
 const { loudness } = require("../effects/loudnessEffect");
 
 module.exports = (ledContext) => {
@@ -12,7 +13,7 @@ module.exports = (ledContext) => {
   router.post("/pulse", async (req, res) => {
     try {
       const { delay, brightness } = req.body;
-      const response = await pulse(ledContext, delay);
+      const response = await pulse(ledContext, delay, brightness);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
       res
@@ -38,7 +39,19 @@ module.exports = (ledContext) => {
   router.post("/walk", async (req, res) => {
     try {
       const { delay, brightness } = req.body;
-      const response = await walk(ledContext, delay);
+      const response = await walk(ledContext, delay, brightness);
+      res.json({ message: `LEDs updated ${response}` });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "Failed to update LEDs", details: error.message });
+    }
+  });
+
+  router.post("/grow", async (req, res) => {
+    try {
+      const { brightness } = req.body;
+      const response = await grow(ledContext, brightness);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
       res
@@ -64,7 +77,7 @@ module.exports = (ledContext) => {
   router.post("/flow", async (req, res) => {
     try {
       const { delay, brightness } = req.body;
-      const response = await flow(ledContext, delay);
+      const response = await flow(ledContext, delay, brightness);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
       res
