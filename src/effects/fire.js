@@ -28,6 +28,7 @@ const christmas = async (ledContext, delay, brightness) => {
 
   const loop = async () => {
     for (let i = 0; i < LEDS; i++) {
+      console.log(i, i % 2);
       if (i % 2 === 0) {
         pixels[i] = red;
       }
