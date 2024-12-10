@@ -10,9 +10,6 @@ const waveformEffect = async (ledContext, delay) => {
       let wave = (i + offset) * 0.1;
       let colorValue = Math.floor((wave + 1) * 255);
       pixels[i] = colorwheel(colorValue);
-      if (i === 0) {
-        console.log(console.log(wave, colorValue));
-      }
     }
 
     offset++;
