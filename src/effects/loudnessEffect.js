@@ -51,10 +51,10 @@ const loudness = async (ledContext, delay) => {
   };
 
   micInputStream.on("data", (data) => {
+    console.log(data);
     try {
       const volume = calculateVolume(data);
       const brightness = calculateBrightness(volume);
-      console.log(`Volume: ${volume}, Brightness: ${brightness}`);
       console.log(`Volume: ${volume}, Brightness: ${brightness}`);
       console.log(`data: ${data}`);
       loop(brightness);
