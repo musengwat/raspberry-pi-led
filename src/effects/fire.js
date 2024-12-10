@@ -17,19 +17,37 @@ const fire2 = async (ledContext, delay, brightness) => {
   setInterval(loop, delay);
 };
 
-const fire = async (ledContext, delay, brightness) => {
+const fire = async (ledContext, delay) => {
   const { ws281x, LEDS } = ledContext;
   const pixels = new Uint32Array(LEDS);
 
+  // Base fire color (dark orange)
+  const darkOrange = 0x7f3f00;
+
+  // Sparkles (bright yellow and red)
+  const yellow = 0xffff00;
+  const red = 0xff0000;
+
   const loop = async () => {
     for (let i = 0; i < LEDS; i++) {
-      let color = 0x7f3f00 + Math.floor(Math.random() * 0x400000); // Random fire colors
+      // Use dark orange as the base color for most LEDs
+      let color = darkOrange;
+
+      // Random chance to add a sparkle (yellow or red)
+      if (Math.random() > 0.8) {
+        // 20% chance to sparkle
+        color = Math.random() > 0.5 ? yellow : red; // Sparkle is either yellow or red
+      }
+
       pixels[i] = color;
     }
 
-    await ws281x.render({ pixels, brightness: brightness || 0.8 });
+    // Render the updated pixel array to the LEDs
+    await ws281x.render({ pixels, brightness: 1.0 });
   };
 
+  // Run the loop at specified intervals to create the fire effect
   setInterval(loop, delay);
 };
+
 module.exports = { fire, fire2 };
