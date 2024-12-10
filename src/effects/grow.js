@@ -13,6 +13,7 @@ const grow = async (ledContext, brightness) => {
 
     // Update offset based on direction
     offset += direction;
+    console.log(offset, direction);
 
     // Reverse direction at the ends
     if (offset >= LEDS || offset < 0) {
