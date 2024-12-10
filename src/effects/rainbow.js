@@ -8,9 +8,9 @@ const rainbow = async (ledContext, delay, brightness) => {
       pixels[i] = colorwheel((i + offset) % 255);
     }
     offset = (offset + 1) % 255; // Wrap around after completing a cycle
-    await ws281x.render({ pixels, brightness: brightness || 0.8 });
+    ws281x.render({ pixels, brightness: brightness || 0.8 });
   };
-
+  console.log(delay, brightness);
   return setInterval(loop, delay);
 };
 
