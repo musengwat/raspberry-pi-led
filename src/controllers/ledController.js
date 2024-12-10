@@ -7,7 +7,7 @@ const initializeLEDs = async (LEDS, gpio) => {
         gpio: gpioPin,
         leds: LEDS,
         type: StripType.WS2811_STRIP_GRB,
-        resetOnExit: false,
+        resetOnExit: true,
       });
     });
   } catch (err) {
