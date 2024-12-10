@@ -39,8 +39,8 @@ module.exports = (ledContext) => {
 
   router.post("/firework", async (req, res) => {
     try {
-      const { delay, brightness } = req.body;
-      const response = await firework(ledContext, delay, brightness);
+      const { delay, brightness, size } = req.body;
+      const response = await firework(ledContext, delay, brightness, size);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
       res
