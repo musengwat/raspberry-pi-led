@@ -22,11 +22,10 @@ const fire = async (ledContext, delay) => {
   const pixels = new Uint32Array(LEDS);
 
   // Base fire color (dark orange)
-  const darkOrange = 0x7f3f00;
-
-  // Sparkles (bright yellow and red)
-  const yellow = 0xffff00;
-  const red = 0xff0000;
+  //   const darkOrange = 0x7f3f00;
+  const darkOrange = 0xfc6f03;
+  const yellow = 0xfca903;
+  const red = 0xfc4e03;
 
   const loop = async () => {
     for (let i = 0; i < LEDS; i++) {
