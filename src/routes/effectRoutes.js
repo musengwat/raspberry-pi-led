@@ -9,6 +9,7 @@ const { sparkle } = require("../effects/sparkle");
 const { loudness } = require("../effects/loudnessEffect");
 const { waveformEffect } = require("../effects/waveformEffect");
 const { firework } = require("../effects/firework");
+const { fire } = require("../effects/fire");
 
 module.exports = (ledContext) => {
   const router = Router();
