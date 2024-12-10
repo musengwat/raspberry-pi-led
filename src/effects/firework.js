@@ -1,4 +1,4 @@
-const fireworkEffect = async (ledContext, delay, brightness) => {
+const firework = async (ledContext, delay, brightness) => {
   const { ws281x, colorwheel, LEDS } = ledContext;
   const pixels = new Uint32Array(LEDS);
 
@@ -19,4 +19,4 @@ const fireworkEffect = async (ledContext, delay, brightness) => {
   setInterval(loop, delay);
 };
 
-module.exports = { fireworkEffect };
+module.exports = { firework };
