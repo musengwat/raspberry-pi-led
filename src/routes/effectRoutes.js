@@ -25,8 +25,8 @@ module.exports = (ledContext) => {
   //reset LEDS
   router.post("/rainbow", async (req, res) => {
     try {
-      const { brightness } = req.body;
-      const response = await rainbow(ledContext, brightness);
+      const { brightness, delay } = req.body;
+      const response = await rainbow(ledContext, delay, brightness);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
       res
