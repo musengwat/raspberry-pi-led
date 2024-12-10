@@ -31,9 +31,11 @@ const christmas = async (ledContext, delay, brightness) => {
       console.log(i, i % 2);
       if (i % 2 === 0) {
         pixels[i] = red;
+        console.log(red);
       }
 
       pixels[i] = green;
+      console.log(green);
     }
 
     // Render the updated pixel array to the LEDs
