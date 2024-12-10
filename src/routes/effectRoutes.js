@@ -9,7 +9,7 @@ const { sparkle } = require("../effects/sparkle");
 const { loudness } = require("../effects/loudnessEffect");
 const { waveformEffect } = require("../effects/waveformEffect");
 const { firework } = require("../effects/firework");
-const { fire } = require("../effects/fire");
+const { fire, fire2 } = require("../effects/fire");
 
 module.exports = (ledContext) => {
   const router = Router();
@@ -41,7 +41,18 @@ module.exports = (ledContext) => {
   router.post("/fire", async (req, res) => {
     try {
       const { delay, brightness, size } = req.body;
-      const response = await fire(ledContext, delay, brightness, size);
+      const response = await fire(ledContext, delay, brightness);
+      res.json({ message: `LEDs updated ${response}` });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "Failed to update LEDs", details: error.message });
+    }
+  });
+  router.post("/fire2", async (req, res) => {
+    try {
+      const { delay, brightness, size } = req.body;
+      const response = await fire2(ledContext, delay, brightness);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
       res
