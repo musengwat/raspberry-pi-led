@@ -10,10 +10,10 @@ const walk = async (ledContext, delay = 200, brightness) => {
 
     offset++;
     console.log(offset);
-    return ws281x.render({ pixels, brightness: brightness || 0.8 });
+    ws281x.render({ pixels, brightness: brightness || 0.8 });
   };
 
-  setInterval(loop, delay);
+  return setInterval(loop, delay);
 };
 
 module.exports = { walk };

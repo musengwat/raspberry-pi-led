@@ -7,7 +7,7 @@ const grow = async (ledContext, delay, brightness) => {
   const loop = async () => {
     pixels[offset] = direction === 1 ? colorwheel(offset % 255) : 0;
     offset += direction;
-    console.log(offset, direction, delay);
+    console.log(offset, direction);
 
     // Reverse direction at the ends
     if (offset >= LEDS || offset < 0) {
@@ -16,7 +16,7 @@ const grow = async (ledContext, delay, brightness) => {
     }
     return ws281x.render({ pixels, brightness: brightness || 0.8 });
   };
-  setInterval(loop, delay);
+  return setInterval(loop, delay);
 };
 
 module.exports = { grow };
