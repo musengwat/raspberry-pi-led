@@ -9,7 +9,7 @@ const { sparkle, twinkle } = require("../effects/sparkle");
 const { loudness } = require("../effects/loudnessEffect");
 const { waveformEffect } = require("../effects/waveformEffect");
 const { firework } = require("../effects/firework");
-const { fire, fire2 } = require("../effects/fire");
+const { christmas, fire2 } = require("../effects/fire");
 
 module.exports = (ledContext) => {
   const router = Router();
@@ -38,10 +38,10 @@ module.exports = (ledContext) => {
     }
   });
 
-  router.post("/fire", async (req, res) => {
+  router.post("/christmas", async (req, res) => {
     try {
       const { delay, brightness, size } = req.body;
-      const response = await fire(ledContext, delay, brightness);
+      const response = await christmas(ledContext, delay, brightness);
       res.json({ message: `LEDs updated ${response}` });
     } catch (error) {
       res
