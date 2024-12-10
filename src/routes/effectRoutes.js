@@ -36,6 +36,18 @@ module.exports = (ledContext) => {
     }
   });
 
+  router.post("/firework", async (req, res) => {
+    try {
+      const { delay, brightness } = req.body;
+      const response = await fireworkEffect(ledContext, delay, brightness);
+      res.json({ message: `LEDs updated ${response}` });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "Failed to update LEDs", details: error.message });
+    }
+  });
+
   //reset LEDS
   router.post("/rainbow", async (req, res) => {
     try {
