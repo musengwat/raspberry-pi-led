@@ -20,6 +20,7 @@ const fire2 = async (ledContext, delay, brightness) => {
 const christmas = async (ledContext, delay, brightness) => {
   const { ws281x, LEDS, rgb2hex } = ledContext;
   const pixels = new Uint32Array(LEDS);
+  let offset = 0;
 
   // Base fire color (dark orange)
   // const darkOrange = 0x7f3f00;
@@ -32,7 +33,7 @@ const christmas = async (ledContext, delay, brightness) => {
   const loop = async () => {
     for (let i = 0; i < LEDS; i++) {
       console.log(i, i % 2);
-      if (i % 2 === 0) {
+      if (i % 2 === 0 && offset % 2 === 0) {
         pixels[i] = red;
         console.log("red");
       } else {
@@ -41,7 +42,8 @@ const christmas = async (ledContext, delay, brightness) => {
       }
     }
 
-    // Render the updated pixel array to the LEDs
+    offset++;
+
     await ws281x.render({ pixels, brightness: brightness || 0.8 });
   };
 
