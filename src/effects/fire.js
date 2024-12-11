@@ -17,35 +17,4 @@ const fire2 = async (ledContext, delay, brightness) => {
   setInterval(loop, delay);
 };
 
-const christmas = async (ledContext, delay, brightness) => {
-  const { ws281x, LEDS, rgb2hex } = ledContext;
-  const pixels = new Uint32Array(LEDS);
-  let offset = true;
-
-  const red = rgb2hex(255, 0, 0);
-  const green = rgb2hex(0, 255, 0);
-  //   const red = 0xbb2528;
-  //   const green = 0x165b33;
-
-  const loop = async () => {
-    for (let i = 0; i < LEDS; i++) {
-      console.log(i, i % 2);
-      if (i % 2 === Number(offset)) {
-        pixels[i] = red;
-        console.log("red");
-      } else {
-        pixels[i] = green;
-        console.log("green");
-      }
-    }
-
-    offset = !offset;
-
-    await ws281x.render({ pixels, brightness: brightness || 0.8 });
-  };
-
-  // Run the loop at specified intervals to create the fire effect
-  setInterval(loop, delay);
-};
-
-module.exports = { christmas, fire2 };
+module.exports = { fire2 };

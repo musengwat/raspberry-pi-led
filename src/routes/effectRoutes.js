@@ -9,7 +9,8 @@ const { sparkle, twinkle } = require("../effects/sparkle");
 const { loudness } = require("../effects/loudnessEffect");
 const { waveformEffect } = require("../effects/waveformEffect");
 const { firework } = require("../effects/firework");
-const { christmas, fire2 } = require("../effects/fire");
+const { fire2 } = require("../effects/fire");
+const { christmas, christmasFade } = require("../effects/christmas");
 
 module.exports = (ledContext) => {
   const router = Router();
@@ -49,6 +50,19 @@ module.exports = (ledContext) => {
         .json({ error: "Failed to update LEDs", details: error.message });
     }
   });
+
+  router.post("/christmasFade", async (req, res) => {
+    try {
+      const { delay, brightness, size } = req.body;
+      const response = await christmasFade(ledContext, delay, brightness);
+      res.json({ message: `LEDs updated ${response}` });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "Failed to update LEDs", details: error.message });
+    }
+  });
+
   router.post("/fire2", async (req, res) => {
     try {
       const { delay, brightness, size } = req.body;
