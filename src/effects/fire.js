@@ -33,9 +33,9 @@ const christmas = async (ledContext, delay, brightness) => {
       if (i % 2 === 0) {
         pixels[i] = red;
         console.log("red");
+      } else {
+        pixels[i] = green;
       }
-
-      pixels[i] = green;
       console.log("green");
     }
 
