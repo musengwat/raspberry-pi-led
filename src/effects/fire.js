@@ -42,7 +42,7 @@ const christmas = async (ledContext, delay, brightness) => {
       }
     }
 
-    offset = !!offset;
+    offset = !offset;
 
     await ws281x.render({ pixels, brightness: brightness || 0.8 });
   };
